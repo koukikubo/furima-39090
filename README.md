@@ -51,7 +51,7 @@ has_many :user_transacts
 | phone_number         | string     | null: false               |
 | user_transact        | references | null: false, foreign_key: true|
 ### Association
-belong_to :user_transact
+belongs_to :user_transact
 
 
 ## productsテーブル
@@ -69,7 +69,7 @@ belong_to :user_transact
 | user                    | references  | null: false, foreign_key: true|
 
 ### Association
-belong_to :user
+belongs_to :user
 has_one :product
 
 
@@ -81,6 +81,6 @@ has_one :product
 | product             | references | null: false, foreign_key: true|              
 
 ### Association
-belong_to :product
-belong_to :user
+belongs_to :product
+belongs_to :user
 has_one :destination
