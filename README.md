@@ -51,7 +51,6 @@ has_many :user_transacts
 | phone_number         | string     | null: false               |
 | user_transacts_id    | integer     | null: false, foreign_key: true|
 ### Association
-belong_to : user
 belong_to : product
 has_one : user_transacts
 
@@ -73,6 +72,7 @@ has_one : user_transacts
 ### Association
 belong_to :user
 has_one :destination
+has_many :user_transacts
 
 ## user_transactsテーブル
 
