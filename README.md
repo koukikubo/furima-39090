@@ -49,7 +49,7 @@ has_many :user_transacts
 | address              | string     | null: false               |
 | building_name        | string     |                           |
 | phone_number         | string     | null: false               |
-| user_transact_id     | references | null: false, foreign_key: true|
+| user_transact        | references | null: false, foreign_key: true|
 ### Association
 belong_to :user_transact
 
@@ -64,7 +64,7 @@ belong_to :user_transact
 | status_id               | integer     | null: false                   |
 | shipping_cost_id        | integer     | null: false                   |
 | prefecture_id           | integer     | null: false                   |
-| shipping_days_id        | integer     | null: false                   |
+| shipping_day_id        | integer     | null: false                   |
 | price                   | integer     | null: false                   |
 | user                    | references  | null: false, foreign_key: true|
 
