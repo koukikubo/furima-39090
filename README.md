@@ -39,7 +39,7 @@ Things you may want to cover:
 has_many :products
 has_many :user_transacts
 
-## destinationテーブル
+## destinationsテーブル
 
 | Column  | Type       | Options                                |
 | ------- | ---------- | ------------------------------         |
@@ -54,7 +54,7 @@ has_many :user_transacts
 belong_to :user_transact
 
 
-## productテーブル
+## productsテーブル
 
 | Column  | Type          | Options                                 |
 | ------- | ----------    | ------------------------------          |
