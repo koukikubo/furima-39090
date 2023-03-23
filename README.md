@@ -70,7 +70,7 @@ belongs_to :user_transact
 
 ### Association
 belongs_to :user
-has_one :user_transact
+has_one :product
 
 
 ## user_transactsテーブル
