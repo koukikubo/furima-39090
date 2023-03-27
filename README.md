@@ -64,13 +64,13 @@ belongs_to :user_transact
 | status_id               | integer     | null: false                   |
 | shipping_cost_id        | integer     | null: false                   |
 | prefecture_id           | integer     | null: false                   |
-| shipping_day_id         | integer     | null: false                   |
+| shipping_day_id        | integer     | null: false                   |
 | price                   | integer     | null: false                   |
 | user                    | references  | null: false, foreign_key: true|
 
 ### Association
 belongs_to :user
-has_one :user_transact
+has_one :product
 
 
 ## user_transactsテーブル

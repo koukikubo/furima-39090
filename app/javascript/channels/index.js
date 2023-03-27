@@ -1,15 +1,5 @@
-function tax (){
-  const itemPrice  = document.getElementById("item-price");
-  itemPrice.addEventListener("keyup", () => {
-    const fee =  Math.floor(itemPrice.value * 0.1);
-    const addTaxPrice = document.getElementById("add-tax-price");
-    addTaxPrice.innerHTML = `${fee}`;
-    const SalesProfit =  Math.floor(itemPrice.value - fee );
-    const profit = document.getElementById("profit");
-    profit.innerHTML = `${SalesProfit}`;
-  });
-}
+// Load all the channels within this directory and all subdirectories.
+// Channel files must be named *_channel.js.
 
-window.addEventListener('load', tax);
-
-require('index')
+const channels = require.context('.', true, /_channel\.js$/)
+channels.keys().forEach(channels)
