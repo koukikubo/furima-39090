@@ -12,4 +12,3 @@ function tax (){
 
 window.addEventListener('load', tax);
 
-require('index')

@@ -2,7 +2,7 @@ require 'rails_helper'
 RSpec.describe Product, type: :model do
   before do
     @product = FactoryBot.build(:product)
-    @product.image = fixture_file_upload('app/assets/images/star.png')
+    @product.image = fixture_file_upload('spec/factories/enru.png')
   end
 
   describe '出品機能' do
@@ -17,10 +17,10 @@ RSpec.describe Product, type: :model do
     end
 
     context '出品ができない時' do
-      it '商品画像を1枚つけることが必須であること' do
-        @product.image.key = ''
+      it 'imageが空では登録できないこと' do
+        @product.image = nil
         @product.valid?
-        expect(@product.errors.full_messages).to include { "Image can't be blank" }
+        expect(@product.errors.full_messages).to include("Image can't be blank")
       end
 
       it '商品名が必須であること' do
@@ -80,8 +80,48 @@ RSpec.describe Product, type: :model do
       it '販売価格は半角数字のみ保存可能であること' do
         @product.price = '１００００'
         @product.valid?
+        expect(@product.errors.full_messages).to include( "Price is not a number")
+      end
+      it '販売価格が半角数字以外がある場合出品できない' do
+        @product.price = 'aあ亜S０カ'
+        @product.valid?
+        expect(@product.errors.full_messages).to include('Price Out of setting range')
+      end
+      it 'userが紐付いていないと出品できない' do
+        @product.user = nil
+        @product.valid?
+        expect(@product.errors.full_messages).to include('User must exist')
+      end
 
-        expect(@product.errors.full_messages).to include('Price Half-width number')
+      it 'カテゴリーが未選択だと出品できない' do
+        @product.category_id = 1
+        @product.valid?
+        # binding.pry
+        expect(@product.errors.full_messages).to include("Category can't be blank")
+      end
+
+      it 'ステータスが未選択だと出品できない' do
+        @product.status_id = 1
+        @product.valid?
+        expect(@product.errors.full_messages).to include("Status can't be blank")
+      end
+
+      it '配送料が未選択だと出品できない' do
+        @product.shipping_cost_id = 1
+        @product.valid?
+        expect(@product.errors.full_messages).to include("Shipping cost can't be blank")
+      end
+
+      it '発送元地域が未選択だと出品できない' do
+        @product.prefecture_id = 1
+        @product.valid?
+        expect(@product.errors.full_messages).to include("Prefecture can't be blank")
+      end
+
+      it '発送までの日数が未選択だと出品できない' do
+        @product.shipping_day_id = 1
+        @product.valid?
+        expect(@product.errors.full_messages).to include("Shipping day can't be blank")
       end
     end
   end

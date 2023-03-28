@@ -5,9 +5,9 @@ class Product < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
   belongs_to :status
-  belongs_to :ShippingCost
+  belongs_to :shipping_cost
   belongs_to :prefecture
-  belongs_to :ShippingDay
+  belongs_to :shipping_day
 
   with_options presence: true, numericality: { other_than: 1, message: "can't be blank" } do
     validates :category_id
@@ -22,7 +22,9 @@ class Product < ApplicationRecord
     validates :description
   end
 
-  validates :price, numericality: { with: /\A[0-9]+\z/, message: 'Half-width number' }
+  
   validates :price,
             numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'Out of setting range' }
+  validates :price, numericality: { only_integer: true }
+  
 end
