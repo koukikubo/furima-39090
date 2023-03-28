@@ -1,5 +1,6 @@
 class Product < ApplicationRecord
   belongs_to :user
+  # has_one :user_transact
   has_one_attached :image
 
   extend ActiveHash::Associations::ActiveRecordExtensions
@@ -27,4 +28,5 @@ class Product < ApplicationRecord
             numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'Out of setting range' }
   validates :price, numericality: { only_integer: true }
   
+
 end
