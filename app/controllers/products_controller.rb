@@ -38,6 +38,8 @@ class ProductsController < ApplicationController
     product = Product.find(params[:id])
     if product.destroy
       redirect_to root_path
+      else
+        render root_path
     end
   end
 
