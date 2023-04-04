@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   before_action :set_products,  only: [:show, :edit ,:update, :destroy]
   before_action :authenticate_user!, except: [:index, :show, :update]
   before_action :correct_user, only: [:edit, :update, :destroy]
-  
+  before_action :prevent_url, only: [:edit, :update, :destroy]
 
   def index
     @products = Product.includes(:user).order("created_at DESC")
@@ -57,5 +57,10 @@ class ProductsController < ApplicationController
     redirect_to(root_path) unless @user == current_user
   end
 
-  
+  def prevent_url
+    if @product.user_id != current_user.id || @product.user_transact != nil # コードを追加
+      redirect_to root_path
+    end
+  end
+
 end
