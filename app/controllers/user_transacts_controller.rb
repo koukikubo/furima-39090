@@ -1,17 +1,14 @@
 class UserTransactsController < ApplicationController
   before_action :authenticate_user!, only: [:index]
+  before_action :set_prototype, onry: [:index, :create]
   def index
-    @product = Product.find(params[:product_id])
     @purchase = Purchase.new
     if current_user == @product.user || @product.user_transact != nil
         redirect_to root_path
     end
   end
   def create
-    
-    @product = Product.find(params[:product_id])
     @purchase = Purchase.new(purchase_params)
-    
     if @purchase.valid?
       pay_item
       @purchase.save
@@ -35,4 +32,9 @@ class UserTransactsController < ApplicationController
       currency: 'jpy'                 # 通貨の種類（日本円）
     )
   end
+
+  def set_prototype
+    @product = Product.find(params[:product_id])
+  end
+
 end

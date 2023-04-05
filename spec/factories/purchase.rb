@@ -8,7 +8,5 @@ FactoryBot.define do
     phone_number        {"08011111111"}
     token {"tok_abcdefghijk00000000000000000"}
     
-    association :user_id
-    association :product_id
   end
 end
