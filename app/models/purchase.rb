@@ -8,8 +8,8 @@ class Purchase
   with_options presence: true do
     validates :user_id
     validates :product_id
-    validates :post_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/}
-    validates :phone_number, format: {with: /\A[0-9]{10,11}\z/}
+    validates :post_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/,  message: 'はハイフンを含めた半角文字列で入力してください (例：123-4567)'}
+    validates :phone_number, format: {with: /\A[0-9]{10,11}\z/, message: 'は10桁以上11桁以内の半角数値で入力してください'}
     validates :city_name
     validates :address
     validates :token

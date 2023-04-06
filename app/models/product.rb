@@ -10,7 +10,7 @@ class Product < ApplicationRecord
   belongs_to :prefecture
   belongs_to :shipping_day
 
-  with_options presence: true, numericality: { other_than: 1, message: "can't be blank" } do
+  with_options presence: true, numericality: { other_than: 1 } do
     validates :category_id
     validates :status_id
     validates :shipping_cost_id
@@ -25,7 +25,7 @@ class Product < ApplicationRecord
 
   
   validates :price,
-            numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'Out of setting range' }
+            numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
   validates :price, numericality: { only_integer: true }
   
 

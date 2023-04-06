@@ -1,0 +1,37 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        nickname: ニックネーム
+        family_name: 名字
+        family_name_kana: 名字
+        first_name: 名前
+        first_name_kana: 名前
+        birthday: 誕生日
+
+      product:
+        image: 画像
+        name: 商品名
+        description: 商品説明
+        category_id: カテゴリー
+        status_id: 商品の状態
+        shipping_cost_id: 配送料
+        prefecture_id: 都道府県
+        shipping_day_id: 配送日数
+        price: 料金
+    errors:
+      messages:
+        other_than:  「--」以外を選択してください
+
+  activemodel:   # Formオブジェクトを用いた場合
+    attributes:
+      purchase:
+        post_code: 郵便番号
+        prefecture_id: 都道府県
+        city_name: 市区町村 
+        address: 番地 
+        token: トークン
+        phone_number: 電話番号
+    errors:
+      messages:
+        other_than:  「--」以外を選択してください
